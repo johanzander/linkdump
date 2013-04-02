@@ -1,0 +1,27 @@
+{% if message %}
+    <b>{{ message }}</b>
+    <p>
+{% endif %}
+{% if link_list %}
+    <table>
+        {% for link in link_list %}
+            <tr bgcolor='{% cycle FFFFFF,EEEEEE as rowcolor %}'>
+                <td><a href='http://{{ link.link_url }}'>{{ link.link_description }}</a></td>
+                <td><a href='/links/edit/{{ link.id }}'>Edit</a></td>
+                <td><a href='/links/delete/{{ link.id }}'>Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>
+        {% if has_previous %}
+            <a href='/links/{{ previous_page }}'>Previous</a>
+            {% if has_next %}|{% endif %}
+        {% endif %}
+        {% if has_next %}
+            <a href='/links/{{ next_page }}'>Next</a>
+        {% endif %}
+        {% else %}
+    <p>No links found.</p>
+{% endif %}
+<p>
+<a href='/links/new'>Add Link</a>

@@ -1,0 +1,7 @@
+<form action='/links/{{ action }}/' method='POST'>{% csrf_token %}
+    Description:
+    <input name=link_description value='{{ link.link_description|escape}}'><br />
+    URL:
+    <input name=link_url value='{{ link.link_url|escape }}'><br />
+    <input type=submit value='{{ button }}'>
+</form>
